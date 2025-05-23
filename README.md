@@ -1,35 +1,67 @@
 # 🚦 Smart Traffic Light Simulator (EMU8086 Assembly)
 
-This project is a **Smart Traffic Light Controller** implemented in **8086 Assembly Language** using the **EMU8086** emulator. It simulates real-world traffic scenarios with support for normal cycling, emergency overrides, high-traffic optimizations, and pedestrian walk signals.
+This is a **Smart Traffic Controller** program written in low-level 8086 assembly, simulating real-world traffic lights using EMU8086. It supports pedestrian signals, high-traffic scenarios, and emergency overrides.
 
 ## 🧠 Features
 
-- 🚗 **Normal Traffic Mode**: Cycles through predefined traffic light states.
-- 🚶 **Pedestrian Support**: Displays "WALK" or "DON'T WALK" based on light signals.
-- 🚨 **Emergency Mode**: Overrides traffic to allow emergency passage in lanes 1–4.
-- 🛣️ **High Traffic Mode**: Prioritizes heavy-flow lanes (1+4 or 2+3).
-- ⏲️ Real-time simulation with time delays for realism.
+- 🔄 Cycles through pre-defined traffic light patterns.
+- 🚨 Emergency lane control (Lanes 1–4).
+- 🚗 High traffic mode (prioritizes Lanes 1+4 or 2+3).
+- 🚶 Pedestrian signal system ("WALK" or "DON'T WALK").
+- ⌛ Real-time delays using BIOS interrupt.
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies
 
-- **EMU8086** Assembly Language
-- DOS Interrupts (`INT 21h`, `INT 15h`, `INT 16h`)
-- I/O Port Handling with `OUT` Instruction
+- EMU8086 Assembly
+- BIOS & DOS interrupts (`INT 15h`, `INT 16h`, `INT 21h`)
+- Port programming with `OUT` instruction
 
-## 📂 File Overview
+## 🖥️ Screenshots
 
-- `Traffic simulator.asm` — Main source file containing all simulation logic.
+### 🔄 Normal Operation
+![image](https://github.com/user-attachments/assets/40d57d31-80e4-4939-a00b-da78c10f0bb3)
 
-## 📸 Screenshots (optional)
-You can add screenshots or a GIF from EMU8086 showing:
-- Startup red light state
-- Emergency lane switching
-- Walk signal message display
+### 🚶 Walk and Don't Walk Prompts
+![image](https://github.com/user-attachments/assets/91287224-f79b-4343-b584-1902cbf2e705)
 
-## 🧪 How It Works
 
-### Startup
-All traffic lights are set to **RED** using:
-```asm
-MOV AX, all_red
-OUT 4, AX
+### 🚗 High Traffic Mode (Lanes 1+4 or 2+3)
+![image](https://github.com/user-attachments/assets/3662372d-cd29-4cb5-91e5-ebb10496b0f0)
+
+
+### 🚨 Emergency Override
+![image](https://github.com/user-attachments/assets/8ffbe84c-7ec0-47ea-a9a3-6d571b894577)
+
+## 🕹️ Controls
+
+| Key | Function                         |
+|-----|----------------------------------|
+| `R` | Enter Emergency Mode             |
+| `H` | Enter High Traffic Mode          |
+| Any | Continue default traffic cycle   |
+
+## 📥 How to Run
+
+1. Open **EMU8086**.
+2. Load the `Traffic simulator.asm` file.
+3. Compile & run the simulation.
+4. Interact using keyboard as per controls.
+
+## 📦 Code Highlights
+
+- Predefined traffic patterns are stored as binary words.
+- `OUT 4, AX` sends the pattern to port to control traffic lights.
+- Timers use BIOS delay (`INT 15h`).
+- Keyboard handled using `INT 16h`.
+
+## 📘 Educational Value
+
+This project is ideal for learning:
+- Embedded systems simulation
+- Real-time programming
+- Assembly-level hardware interfacing
+- I/O port control
+
+## 🔖 License
+
+MIT License
